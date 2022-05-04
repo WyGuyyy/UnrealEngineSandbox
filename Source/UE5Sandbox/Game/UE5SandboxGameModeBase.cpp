@@ -29,6 +29,7 @@ void AUE5SandboxGameModeBase::UpdateItemText()
 	GameWidget->SetItemText(ItemsCollected, ItemsInLevel);
 }
 
+// Test Comment
 void AUE5SandboxGameModeBase::ItemCollected()
 {
 	ItemsCollected++;
