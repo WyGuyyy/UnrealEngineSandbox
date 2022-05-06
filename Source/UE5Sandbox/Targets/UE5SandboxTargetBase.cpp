@@ -55,7 +55,7 @@ void AUE5SandboxTargetBase::OnTargetHit(UPrimitiveComponent* HitComponent, AActo
 	DynamicMaterial->SetVectorParameterValue(TEXT("GlowColor"), FLinearColor::Green);
 	Mesh->SetMaterial(0, DynamicMaterial);
 
-	if (Cast<AUE5SandboxPlayer>(OtherActor) != nullptr) {
+	if (Cast<APawn>(OtherActor) != nullptr) {
 		
 		Collected();
 
