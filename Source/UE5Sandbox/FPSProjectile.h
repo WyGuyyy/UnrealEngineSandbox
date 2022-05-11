@@ -4,9 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "FPSProjectile.generated.h"
 #include "Components/SphereComponent.h"
 #include "GameFramework/ProjectileMovementComponent.h"
+#include "FPSProjectile.generated.h"
 
 UCLASS()
 class UE5SANDBOX_API AFPSProjectile : public AActor
@@ -26,7 +26,7 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	// Sphere Collision Component
-	UPROPERTY(VisibleDefaultOnly, Category = Projectile)
+	UPROPERTY(VisibleDefaultsOnly, Category = Projectile)
 		USphereComponent* CollisionComponent;
 
 	// Projectile Movement Component
