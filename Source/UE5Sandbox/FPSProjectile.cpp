@@ -50,7 +50,23 @@ void AFPSProjectile::BeginPlay()
 		// Setting the custom gravity scale for this projectile to 0 (no gravity)
 		ProjectileMovementComponent->ProjectileGravityScale = 0.0f;
 	}
-	
+	if (!ProjectileMeshComponent) 
+	{
+		ProjectileMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ProjectileMeshComponent"));
+		static ConstructorHelpers::FObjectFinder<UStaticMesh>Mesh(TEXT("'/Game/MyStuff/Meshes/Sphere.Sphere'"));
+		if (Mesh.Succeeded())
+		{
+			ProjectileMeshComponent->SetStaticMesh(Mesh.Object);
+		}
+	}
+	static ConstructorHelpers::FObjectFinder<UMaterial>Material(TEXT("'/Game/MyStuff/Meshes/SphereMaterial.SphereMaterial'"));
+	if (Material.Succeeded())
+	{
+		ProjectileMaterialInstance = UMaterialInstanceDynamic::Create(Material.Object, ProjectileMeshComponent);
+	}
+	ProjectileMeshComponent->SetMaterial(0, ProjectileMaterialInstance);
+	ProjectileMeshComponent->SetRelativeScale3D(FVector(0.09f, 0.09f, 0.09f));
+	ProjectileMeshComponent->SetupAttachment(RootComponent);
 }
 
 // Called every frame
